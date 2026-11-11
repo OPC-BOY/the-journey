@@ -92,10 +92,16 @@ body{background-color:#f0e0c0;background-image:radial-gradient(ellipse at center
 @keyframes beat{50%{transform:scale(1.1)}}
 @media(max-width:650px){#journey{padding-left:52px;padding-right:52px}.sh{width:40px;height:40px;font-size:21px}.side.right{right:calc(6px + env(safe-area-inset-right,0px))}.side.left{left:calc(6px + env(safe-area-inset-left,0px))}}
 @media(prefers-reduced-motion:reduce){.sh{animation:none}}
+
+#bday{max-width:760px;margin:auto;padding:calc(30px + env(safe-area-inset-top,0px)) 20px calc(80px + env(safe-area-inset-bottom,0px))}
+.bd-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.bd-h{font-family:'Aref Ruqaa','Cairo',serif;color:#7a3347;margin:0 0 10px;font-size:23px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:#fbf1dc;border:1px solid #d3b583;margin:8px 0;cursor:pointer;line-height:1.8;font-weight:600}
+.chk input{width:22px;height:22px;margin-top:4px;accent-color:#a8475f;flex:none}.chk.on span{opacity:.6;text-decoration:line-through;text-decoration-color:#a8475f}
+.add-row{display:flex;gap:9px;margin-top:12px}.add-row input{flex:1;min-width:0;background:#fdf5e4;border:1px solid #cfae7e;border-radius:14px;padding:11px 14px;color:#4a3424;outline:none}.add-row input:focus{border-color:#a8475f}
 </style>
 </head>
 <body>
-<div id="gate" class="screen"><div class="login-card"><span class="big-heart">♡</span><div class="eyebrow">A LITTLE JOURNEY</div><h1>في حاجة صغيرة مستنياكي</h1><p class="sub">رحلة بسيطة معمولة مخصوص عشانك.<br>بس الأول... عارفة كلمة السر؟</p><div class="pass-wrap"><input id="password" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" aria-label="كلمة السر"><button class="btn" id="enter">افتحي</button></div><div id="error" class="error"></div><div class="eyebrow" style="margin-top:15px;opacity:.7">HINT: A SPECIAL DATE</div></div></div>
+<div id="gate" class="screen"><div class="login-card"><span class="big-heart">♡</span><div class="eyebrow">A LITTLE JOURNEY</div><h1>في حاجة صغيرة مستنياكي</h1><p class="sub">رحلة بسيطة معمولة مخصوص عشانك.<br>بس الأول... عارفة كلمة السر؟</p><div class="pass-wrap"><input id="password" type="password" inputmode="numeric" maxlength="8" placeholder="••••••" aria-label="كلمة السر"><button class="btn" id="enter">افتحي</button></div><div id="error" class="error"></div><div class="eyebrow" style="margin-top:15px;opacity:.7">HINT: A SPECIAL DATE</div></div></div>
 <main id="journey" class="hidden"><nav class="side right" aria-label="قلوب مستخبية"><button class="sh" id="heartA" aria-label="قلب الرسالة">♥</button><button class="sh" id="heartC" aria-label="قلب مستخبي">♥</button></nav><nav class="side left" aria-label="قلوب مستخبية"><button class="sh" id="heartB" aria-label="قلب مستخبي">♥</button><button class="sh" id="heartD" aria-label="قلب مستخبي">♥</button></nav>
 <div class="topline"><span class="pill">✦ A LITTLE JOURNEY</span></div>
 <header class="hero"><div class="eyebrow">THIS LITTLE SPACE IS YOURS</div><h1>أهلًا بيكي <span class="spark">♡</span></h1><p>مكان صغير ليكي، من غير لازم ولا مفروض. خدي وقتك واكتشفيه براحتك، وعلى جنب الشاشة في قلوب مستخبية فيها حاجات ليكي ♡</p></header>
@@ -106,12 +112,18 @@ body{background-color:#f0e0c0;background-image:radial-gradient(ellipse at center
 <section class="section"><div class="section-head"><h2>الوقت بيعدي</h2><span>من أول رنة</span></div><div class="card" style="text-align:center"><h2 style="margin:6px 0 0">كل يوم صباح الخير جديد</h2><div class="counter"><div><b id="days">000</b><small>يوم</small></div><div><b id="hours">00</b><small>ساعة</small></div><div><b id="minutes">00</b><small>دقيقة</small></div><div><b id="seconds">00</b><small>ثانية</small></div></div><p class="sub" style="margin:16px 0 0">من 9 نوفمبر 2024، أول رسالة بينا.</p></div></section>
 <footer>صُنعت بتفاصيل صغيرة · ولسه الحكاية مكملة ♡</footer>
 </main>
+<main id="bday" class="hidden"><div class="bd-top"><span class="pill">✦ ANAS'S LITTLE LIST</span><button class="btn small ghost" id="bdBack">ارجعي للموقع</button></div>
+<header class="hero" style="padding:44px 0 26px"><div class="eyebrow">A SECOND PAGE, JUST FOR YOU</div><h1>حاجات نجربها سوا</h1><p>كلمة السر التانية اتفتحت ✦<br>من غير ترتيب ولا مواعيد ولا "لازم". علّمي على اللي يعجبك، وضيفي حاجة من عندك.</p></header>
+<div class="card"><h2 class="bd-h">لما نتقابل</h2><div id="listMeet"></div></div>
+<div class="card" style="margin-top:16px"><h2 class="bd-h">عن بعد، لحد ما نتقابل</h2><div id="listFar"></div></div>
+<div class="card" style="margin-top:16px"><h2 class="bd-h">من عندك</h2><div id="listOwn"></div><div class="add-row"><input id="ownIn" type="text" maxlength="80" placeholder="اكتبي حاجة نفسك نجربها..." aria-label="أضيفي حاجة"><button class="btn small" id="ownAdd">ضيفي</button></div></div>
+<div class="card" style="margin-top:16px;text-align:center"><p class="sub" style="margin:0 0 12px">لما تخلصي اختياراتك، كلميني ♡</p><button class="btn" id="bdSend">كلميني على واتساب</button> <button class="btn small ghost" id="bdCopy">انسخي اختياراتك</button><div id="bdMsg" class="pmsg"></div></div></main>
 <div id="secretModal" class="modal hidden"><div class="letter" id="letter"><button class="close" id="close" aria-label="إغلاق">×</button><h3>ورقة صغيرة</h3><div id="lensStage"><div id="blurLayer">عارفة؟<br>أنا بحمد ربنا كل يوم إني بصحى ألاقي منك رسالة صباح الخير.<br>وإني كل يوم بلاقي حد معايا يساندني، أحكيله يومي ويحكيلي.<br>عملتي في حياتي تغييرات كتير أوي، وبالإيجاب، وسبتي فيا طباع حلوة جدًا.<br>لحد دلوقتي مفتكرش في يوم إننا شدينا مع بعض، وبحمد ربنا على ده.<br>إنتي من أحسن الحاجات اللي حصلتلي. شاركتيني المر قبل الحلو.<br>وبحب أوي الجملة دي وبفتكرك بيها على طول:<br>“تيجي نشرب شاي ويحسدنا الرايح والجاي”<br>الكلمة دي عندي ترجمتها شهد.<br>والحنان والمثابرة والصبر وحلاوة الدنيا كلها ترجمتها عندي برضه شهد.<br>إنتي متعرفيش مكانتك عندي قد إيه، وكبرتي في عيني قد إيه بجد.<br>شكرًا إنك بقيتي جزء من حياتي.<br><br>— أنس</div><div id="clearLayer" aria-hidden="true">عارفة؟<br>أنا بحمد ربنا كل يوم إني بصحى ألاقي منك رسالة صباح الخير.<br>وإني كل يوم بلاقي حد معايا يساندني، أحكيله يومي ويحكيلي.<br>عملتي في حياتي تغييرات كتير أوي، وبالإيجاب، وسبتي فيا طباع حلوة جدًا.<br>لحد دلوقتي مفتكرش في يوم إننا شدينا مع بعض، وبحمد ربنا على ده.<br>إنتي من أحسن الحاجات اللي حصلتلي. شاركتيني المر قبل الحلو.<br>وبحب أوي الجملة دي وبفتكرك بيها على طول:<br>“تيجي نشرب شاي ويحسدنا الرايح والجاي”<br>الكلمة دي عندي ترجمتها شهد.<br>والحنان والمثابرة والصبر وحلاوة الدنيا كلها ترجمتها عندي برضه شهد.<br>إنتي متعرفيش مكانتك عندي قد إيه، وكبرتي في عيني قد إيه بجد.<br>شكرًا إنك بقيتي جزء من حياتي.<br><br>— أنس</div><div id="ring">🔍</div></div><div class="lens-tip">حركي العدسة على الكلام عشان يبان ✧</div></div></div>
 <div id="chickModal" class="modal hidden"><div class="note"><button class="close" id="close2" aria-label="إغلاق">×</button><div class="chick" id="nEmoji">🐣</div><h3 id="nTitle">أشطر كتكوتة</h3><p id="nText"></p></div></div>
 <script>
 const $=id=>document.getElementById(id);
 const gate=$('gate'),journey=$('journey'),pass=$('password'),error=$('error');
-function unlock(){if(pass.value==='932009'){gate.classList.add('hidden');journey.classList.remove('hidden');startCounter();}else{error.textContent='مش هي دي كلمة السر... جرّبي تاني ♡';pass.value='';pass.focus();}}
+function unlock(){if(pass.value==='932009'){gate.classList.add('hidden');journey.classList.remove('hidden');startCounter();cStarted=true;}else if(['6112008','06112008'].includes(pass.value)){openBday()}else{error.textContent='مش هي دي كلمة السر... جرّبي تاني ♡';pass.value='';pass.focus();}}
 $('enter').addEventListener('click',unlock);pass.addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
 $('videoUpload').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const v=document.createElement('video');v.controls=true;v.src=URL.createObjectURL(f);const fr=$('videoFrame');fr.innerHTML='';fr.appendChild(v);});
 const song=$('song'),pb=$('playBtn'),fill=$('fill'),bar=$('bar');const fmt=t=>Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
@@ -154,6 +166,21 @@ $('helpBtn').onclick=()=>{if(locked)return;const pos=order.findIndex((v,i)=>v!==
 $('peekBtn').onclick=()=>board.classList.toggle('show');
 $('resetBtn').onclick=()=>build(true);
 build(false);
+
+let cStarted=false;const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const MEET=['شاي على البحر، نسيم البحر مع الشاي في حاجة واحدة ☕🌊','مشوار طويل نسرح فيه زي أول مرة','معرض كتب أو مكتبة، وكل واحد يختار كتاب للتاني 📚','كافيه نجرب فيه قهوتها، سادة ولا حسب المزاج','متحف أو مكان تاريخي، عشان حلم مدرسة التاريخ 🏛️','نتصور صور سوا 📸','درس سواقة في الأستر، لما أطلع الرخصة إن شاء الله 🚗'];
+const FAR=['فويس طويل نحكي فيه أحلامنا','فيلم نشوفه في نفس الوقت','أنا أعلمك حاجة، وإنتي تعلميني حاجة هاند ميد 🧶','كل واحد يبعت للتاني حاجة صغيرة بالبوسطة 💌'];
+let checks=LS.get('bdChecks',{}),own=LS.get('bdOwn',[]);
+function row(id,text,box){const l=document.createElement('label');l.className='chk'+(checks[id]?' on':'');const c=document.createElement('input');c.type='checkbox';c.checked=!!checks[id];c.onchange=()=>{checks[id]=c.checked;LS.set('bdChecks',checks);l.classList.toggle('on',c.checked)};const t=document.createElement('span');t.textContent=text;l.append(c,t);box.appendChild(l)}
+function renderList(){[['listMeet',MEET,'m'],['listFar',FAR,'f']].forEach(([id,arr,k])=>{const b=$(id);b.innerHTML='';arr.forEach((t,i)=>row(k+i,t,b))});const o=$('listOwn');o.innerHTML='';own.forEach((t,i)=>row('o'+i,t,o))}
+function openBday(){gate.classList.add('hidden');$('bday').classList.remove('hidden');renderList();window.scrollTo(0,0)}
+$('bdBack').onclick=()=>{$('bday').classList.add('hidden');journey.classList.remove('hidden');if(!cStarted){cStarted=true;startCounter()}window.scrollTo(0,0)};
+$('ownAdd').onclick=()=>{const v=$('ownIn').value.trim();if(!v)return;own.push(v);LS.set('bdOwn',own);$('ownIn').value='';renderList()};
+$('ownIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('ownAdd').click()});
+const WA='201031435482';
+function bdText(){const all=[...MEET.map((t,i)=>['m'+i,t]),...FAR.map((t,i)=>['f'+i,t]),...own.map((t,i)=>['o'+i,t])].filter(([id])=>checks[id]).map(([,t])=>'✔ '+t);if(!all.length){$('bdMsg').textContent='علّمي على حاجة الأول ♡';return null}return 'اختياراتي من القايمة:\n'+all.join('\n')}
+$('bdSend').onclick=()=>{const u='https://wa.me/'+WA;$('bdMsg').textContent='بفتح واتساب ♡';const w=window.open(u,'_blank','noopener');if(!w)location.href=u};
+$('bdCopy').onclick=async()=>{const t=bdText();if(!t)return;try{await navigator.clipboard.writeText(t);$('bdMsg').textContent='اتنسخت، ابعتيها لأنس ♡'}catch(e){$('bdMsg').textContent='مقدرتش أنسخ، صوّري الشاشة وابعتيها ♡'}};
 </script>
 </body>
 </html>
